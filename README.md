@@ -14,25 +14,32 @@
 #####  В окне mock_PK введите " y \n " для того что бы эмулировать нажатие кнопки. После этого в консоли mock_KNU.py будет сообщение о том что кнопка нажата. После этого в окне main.py должно быть сообщение о нажатии кнопки и команда уже будет отправлена на КМР. В итоге нужно посмотреть в окно test_RVY.py что бы увидеть координаты которые были отправлены с КВУ.
 
 
-+---------------------+    +---------------------+
-|         ПК          |    |         КНУ          |
-| Arduino + Кнопка    |    | Arduino + ESP8266    |
-| + Светодиоды      |    |  WiFi (UDP)         |
-+---------------------+    +---------------------+
-        |                      
-        | SoftwareSerial       
-        +---------------------+
-               |
-               | WiFi (UDP)
-               v
-+-----------------------------------+
-|            КВУ (Компьютер)        |
-| Python: Обработка данных        |
-+-----------------------------------+
-               |
-               | WiFi (UDP)
-               v
-+-----------------------------------+
-|            КМР (Компьютер)        |
-| Python: Симуляция манипулятора   |
-+-----------------------------------+
+<table style="border-collapse: collapse; width: 100%;">
+  <tr>
+    <td style="border: 1px solid black; text-align: center;">
+      ПК (Arduino)<br>
+      Кнопка + Светодиоды
+    </td>
+    <td style="border: 1px solid black; text-align: center;">
+      КНУ (Arduino)<br>
+      ESP8266 (WiFi)
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center;">
+      SoftwareSerial
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="border: 1px solid black; text-align: center;">
+      КВУ (Компьютер)<br>
+      Python: Обработка данных
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="border: 1px solid black; text-align: center;">
+      КМР (Компьютер)<br>
+      Python: Симуляция манипулятора
+    </td>
+  </tr>
+</table>
