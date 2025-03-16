@@ -1,4 +1,4 @@
-// KNY_konk.ino (Контроллер нижнего уровня)
+// Контроллер нижнего уровня
 #include <SoftwareSerial.h>
 #include <ESP8266WiFi.h> // Для реализации UDP (пример для ESP8266)
 

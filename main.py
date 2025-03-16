@@ -1,8 +1,7 @@
-# main.py
 import socket
 import time
 
-# Настройки UDP
+# UDP конфиги
 UDP_IP = "0.0.0.0"  # IP-адрес КВУ
 UDP_PORT_KNU = 6006  # Порт для связи с КНУ
 UDP_PORT_KMR = 6000  # Порт для связи с КМР
@@ -45,28 +44,29 @@ current_vertex_index = 0
 grabber_state = 0
 
 # Основной цикл
-try:
-    while True:
-        # Получаем данные от КНУ (кнопка)
-        knu_data = receive_from_knu()
+if __name__ == "__main__":
+    try:
+        while True:
+            # Получаем данные от КНУ (кнопка)
+            knu_data = receive_from_knu()
 
-        if knu_data and knu_data.startswith("B:"):
-            button_state = int(knu_data[2:].replace("#", ""))
-            print(f"Состояние кнопки: {button_state}")
+            if knu_data and knu_data.startswith("B:"):
+                button_state = int(knu_data[2:].replace("#", ""))
+                print(f"Состояние кнопки: {button_state}")
 
-            # Обработка нажатия кнопки
-            if button_state == 1:
-                # Отправляем координаты следующей вершины КМР
-                x, y, z = square_vertices[current_vertex_index]
-                send_command_to_kmr(x, y, z, grabber_state)
-                print(f"Отправка координат: x={x}, y={y}, z={z}")
-                current_vertex_index = (current_vertex_index + 1) % len(square_vertices)
+                # Обработка нажатия кнопки
+                if button_state == 1:
+                    # Отправляем координаты следующей вершины КМР
+                    x, y, z = square_vertices[current_vertex_index]
+                    send_command_to_kmr(x, y, z, grabber_state)
+                    print(f"Отправка координат: x={x}, y={y}, z={z}")
+                    current_vertex_index = (current_vertex_index + 1) % len(square_vertices)
 
-        time.sleep(0.1)
+            time.sleep(0.1)
 
-except KeyboardInterrupt:
-    print("Прерывание работы")
+    except KeyboardInterrupt:
+        print("Прерывание работы")
 
-finally:
-    sock.close()
-    sock_kmr.close()
+    finally:
+        sock.close()
+        sock_kmr.close()

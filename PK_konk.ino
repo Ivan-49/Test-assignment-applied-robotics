@@ -1,4 +1,4 @@
-// PK_konk.ino (Периферийный контроллер)
+// Периферийный контроллер
 #define buttonPin 8
 #define led1Pin 4  // Ожидание
 #define led2Pin 5  // Завершение

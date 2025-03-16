@@ -1,4 +1,3 @@
-# mock_PK.py
 import time
 import socket
 
